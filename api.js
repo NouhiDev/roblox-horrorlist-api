@@ -140,7 +140,7 @@ $.getJSON(
 function get_game_icon(placeid) {
   $.ajax(`https://thumbnails.roblox.com/v1/places/gameicons?placeIds=${placeid}&returnPolicy=PlaceHolder&size=128x128&format=Png&isCircular=false`, {
     success: function(data) {
-      return data["data"];
+      return data;
     }
   });
 }
