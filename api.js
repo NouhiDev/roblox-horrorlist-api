@@ -137,10 +137,12 @@ $.getJSON(
   }
 ); */
 
-async function get_game_icon(placeid) {
-    let url = `https://thumbnails.roblox.com/v1/places/gameicons?placeIds=${placeid}&returnPolicy=PlaceHolder&size=128x128&format=Png&isCircular=false`;
-    let obj = await (await fetch(url)).json();
-    return obj;
+function get_game_icon(placeid) {
+  $.ajax(`https://thumbnails.roblox.com/v1/places/gameicons?placeIds=${placeid}&returnPolicy=PlaceHolder&size=128x128&format=Png&isCircular=false`, {
+    success: function(data) {
+      return data["data"];
+    }
+  });
 }
 console.log(get_game_icon(11239587757));
 
