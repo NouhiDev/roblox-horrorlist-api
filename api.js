@@ -6,7 +6,7 @@ const app = express()
 const port = 8080
 
 app.get('/game-info/:id', async (req, res) => {
-    res.setHeader("Access-Control-Allow-Origin", "nouhi.dev");
+    res.setHeader("Access-Control-Allow-Origin", "*");
     const game_info = await noblox.getUniverseInfo([ req.params['id'] ]);
     res.send(game_info);
 })
