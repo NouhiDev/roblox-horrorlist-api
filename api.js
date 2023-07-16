@@ -1,11 +1,15 @@
-var request = new XMLHttpRequest();
+const noblox = require("noblox.js")
 
-request.open("GET", "https://games.roblox.com/v1/games/multiget-place-details?placeIds=7902470429", true);
+// Express Server Setup
+const express = require('express')
+const app = express()
+const port = 8080
 
-request.onload = function() {
-  var data = JSON.parse(this.response);
+app.get('/game-info/:id', async (req, res) => {
+    const game_info = await noblox.getUniverseInfo([ req.params['id'] ]);
+    res.send(game_info);
+})
 
-  console.log(data);
-}
-
-request.send();
+app.listen(port, () => {
+    console.log(`Roblox Horrorlist API Server listening on port ${port}`)
+});
