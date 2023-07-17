@@ -40,7 +40,7 @@ app.get('/game-info/:id', async (req, res) => {
 // GETs game icon using Roblox's Thumbnails API v1 by the Universe ID
 app.get('/game-icon/:id', async (req, res) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
-    await fetch(`https://thumbnails.roblox.com/v1/places/gameicons?placeIds=${req.params['id']}&returnPolicy=PlaceHolder&size=50x50&format=Png&isCircular=false`)
+    await fetch(`https://thumbnails.roblox.com/v1/games/icons?universeIds=${req.params['id']}&returnPolicy=PlaceHolder&size=50x50&format=Png&isCircular=false`)
             .then((response) => response.json())
             .then((json) => {
                 res.json(json);
